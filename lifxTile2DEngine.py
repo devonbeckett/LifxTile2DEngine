@@ -10,7 +10,7 @@ from struct import *
 #//////////////////////////////////////////////////////////////////////////////////////////////////////////
 # GLOBAL DEFINES
 #//////////////////////////////////////////////////////////////////////////////////////////////////////////
-LOOP_INTERVAL          = .1      # how often we want to check the time (in seconds)
+LOOP_INTERVAL          = .075      # how often we want to check the time (in seconds)
 TILE_NAME              = "Tile" # Set this to what you named your Tile
 CLIENT_ID              = 0      # Make Something up
 BROADCAST_ADDR         = '255.255.255.255' 
@@ -112,7 +112,8 @@ orange = RGBtoHSBK( .5, .2, 0 ,lum)
 red    = RGBtoHSBK( 1 , 0 , 0 ,lum)
 green  = RGBtoHSBK( 0 , 1 , 0 ,lum)
 blue   = RGBtoHSBK( 0 , 0 , 1 ,lum)
-black  = RGBtoHSBK( 0 , 0 , 0 , 0 )
+black  = RGBtoHSBK( 0 , 0 , 0 , 1 )
+transparent  = RGBtoHSBK( 0 , 0 , 0 , 0 )
 
 blankscene = [
 [hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)],
@@ -121,8 +122,8 @@ blankscene = [
 [hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)],
 [hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)],
 [hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)],
-[hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)],
-[hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)]]
+[black,hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)],
+[black,hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)]]
 
 blanktile = [
 [hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0),hsbk(0,0,0,0)],
@@ -168,21 +169,45 @@ def BuildSetTileState64(tile, data):
         y += 1
     return pack("<BBxBBBL512s", tile, 1, 0, 0, 8, 0, pixels)
     
-def AddSprite(x, y, sprite, sz_x, sz_y, scene):
+def DrawSprite(x, y, sprite, scene):
     pos_x = x
     pos_y = y
+    sz_y = len(sprite)
+    if sz_y > 0:
+        sz_x = len(sprite[0])
     s_x = 0
     s_y = 0
     while s_y < sz_y:
         while s_x < sz_x:
             if pos_x < WIDTH and pos_x >= 0 and pos_y < HEIGHT and pos_y >= 0:
-                scene[pos_y][pos_x] = sprite[s_y][s_x]
+                if sprite[s_y][s_x] is not transparent:
+                    scene[pos_y][pos_x] = sprite[s_y][s_x]
             s_x += 1
             pos_x += 1
         pos_x = x
         s_x = 0
         pos_y += 1
         s_y += 1
+
+def DrawRectangle(x, y, size_x, size_y, hsbk, scene):
+    pos_x = x
+    pos_y = y
+    s_x = 0
+    s_y = 0
+    while s_y < size_y:
+        while s_x < size_x:
+            if pos_x < WIDTH and pos_x >= 0 and pos_y < HEIGHT and pos_y >= 0:
+                scene[pos_y][pos_x] = hsbk
+            s_x += 1
+            pos_x += 1
+        pos_x = x
+        s_x = 0
+        pos_y += 1
+        s_y += 1
+
+def DrawPoint(x, y, hsbk, scene):
+    if x < WIDTH and x >= 0 and y < HEIGHT and y >= 0:
+        scene[y][x] = hsbk
 
 
 ##################################################
@@ -194,84 +219,84 @@ def AddSprite(x, y, sprite, sz_x, sz_y, scene):
 # extra characters here like the colon that typically goes between the hours and minutes.
 
 pacman = [ # right to left, mouth open
-          [black,black,yellow,yellow,yellow,yellow,black,black],
-          [black,yellow,yellow,yellow,yellow,yellow,yellow,black],
-          [black,black,yellow,yellow,yellow,yellow,yellow,yellow],
-          [black,black,black,yellow,yellow,yellow,yellow,yellow],
-          [black,black,black,black,yellow,yellow,yellow,yellow],
-          [black,black,yellow,yellow,yellow,yellow,yellow,yellow],
-          [black,yellow,yellow,yellow,yellow,yellow,yellow,black],
-          [black,black,yellow,yellow,yellow,yellow,black,black]
+          [transparent,transparent,yellow,yellow,yellow,yellow,transparent,transparent],
+          [transparent,yellow,yellow,yellow,yellow,yellow,yellow,transparent],
+          [transparent,transparent,yellow,yellow,yellow,yellow,yellow,yellow],
+          [transparent,transparent,transparent,yellow,yellow,yellow,yellow,yellow],
+          [transparent,transparent,transparent,transparent,yellow,yellow,yellow,yellow],
+          [transparent,transparent,yellow,yellow,yellow,yellow,yellow,yellow],
+          [transparent,yellow,yellow,yellow,yellow,yellow,yellow,transparent],
+          [transparent,transparent,yellow,yellow,yellow,yellow,transparent,transparent]
          ]
 pacman2 = [ # mouth closed
-          [black,black,yellow,yellow,yellow,yellow,black,black],
-          [black,yellow,yellow,yellow,yellow,yellow,yellow,black],
+          [transparent,transparent,yellow,yellow,yellow,yellow,transparent,transparent],
+          [transparent,yellow,yellow,yellow,yellow,yellow,yellow,transparent],
           [yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow],
           [yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow],
           [yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow],
           [yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow],
-          [black,yellow,yellow,yellow,yellow,yellow,yellow,black],
-          [black,black,yellow,yellow,yellow,yellow,black,black]
+          [transparent,yellow,yellow,yellow,yellow,yellow,yellow,transparent],
+          [transparent,transparent,yellow,yellow,yellow,yellow,transparent,transparent]
          ]
 pacman3 = [ # left to right mouth open
-          [black,black,yellow,yellow,yellow,yellow,black,black],
-          [black,yellow,yellow,yellow,yellow,yellow,yellow,black],
-          [yellow,yellow,yellow,yellow,yellow,yellow,black,black],
-          [yellow,yellow,yellow,yellow,yellow,black,black,black],
-          [yellow,yellow,yellow,yellow,black,black,black,black],
-          [yellow,yellow,yellow,yellow,yellow,yellow,black,black],
-          [black,yellow,yellow,yellow,yellow,yellow,yellow,black],
-          [black,black,yellow,yellow,yellow,yellow,black,black]
+          [transparent,transparent,yellow,yellow,yellow,yellow,transparent,transparent],
+          [transparent,yellow,yellow,yellow,yellow,yellow,yellow,transparent],
+          [yellow,yellow,yellow,yellow,yellow,yellow,transparent,transparent],
+          [yellow,yellow,yellow,yellow,yellow,transparent,transparent,transparent],
+          [yellow,yellow,yellow,yellow,transparent,transparent,transparent,transparent],
+          [yellow,yellow,yellow,yellow,yellow,yellow,transparent,transparent],
+          [transparent,yellow,yellow,yellow,yellow,yellow,yellow,transparent],
+          [transparent,transparent,yellow,yellow,yellow,yellow,transparent,transparent]
          ]
 blinky = [
-          [black,black,red,red,red,red,black,black],
-          [black,red,red,red,red,red,red,black],
-          [black,white,white,red,white,white,red,black],
+          [transparent,transparent,red,red,red,red,transparent,transparent],
+          [transparent,red,red,red,red,red,red,transparent],
+          [transparent,white,white,red,white,white,red,transparent],
           [red,blue,white,red,blue,white,red,red],
           [red,red,red,red,red,red,red,red],
           [red,red,red,red,red,red,red,red],
           [red,red,red,red,red,red,red,red],
-          [black,red,black,red,red,black,red,black]
+          [transparent,red,transparent,red,red,transparent,red,transparent]
          ]
 pinky = [
-          [black,black,pink,pink,pink,pink,black,black],
-          [black,pink,pink,pink,pink,pink,pink,black],
-          [black,white,white,pink,white,white,pink,black],
+          [transparent,transparent,pink,pink,pink,pink,transparent,transparent],
+          [transparent,pink,pink,pink,pink,pink,pink,transparent],
+          [transparent,white,white,pink,white,white,pink,transparent],
           [pink,blue,white,pink,blue,white,pink,pink],
           [pink,pink,pink,pink,pink,pink,pink,pink],
           [pink,pink,pink,pink,pink,pink,pink,pink],
           [pink,pink,pink,pink,pink,pink,pink,pink],
-          [black,pink,black,pink,pink,black,pink,black]
+          [transparent,pink,transparent,pink,pink,transparent,pink,transparent]
          ]
 inky = [
-          [black,black,cyan,cyan,cyan,cyan,black,black],
-          [black,cyan,cyan,cyan,cyan,cyan,cyan,black],
-          [black,white,white,cyan,white,white,cyan,black],
+          [transparent,transparent,cyan,cyan,cyan,cyan,transparent,transparent],
+          [transparent,cyan,cyan,cyan,cyan,cyan,cyan,transparent],
+          [transparent,white,white,cyan,white,white,cyan,transparent],
           [cyan,blue,white,cyan,blue,white,cyan,cyan],
           [cyan,cyan,cyan,cyan,cyan,cyan,cyan,cyan],
           [cyan,cyan,cyan,cyan,cyan,cyan,cyan,cyan],
           [cyan,cyan,cyan,cyan,cyan,cyan,cyan,cyan],
-          [black,cyan,black,cyan,cyan,black,cyan,black]
+          [transparent,cyan,transparent,cyan,cyan,transparent,cyan,transparent]
          ]
 clyde = [
-          [black,black,orange,orange,orange,orange,black,black],
-          [black,orange,orange,orange,orange,orange,orange,black],
-          [black,white,white,orange,white,white,orange,black],
+          [transparent,transparent,orange,orange,orange,orange,transparent,transparent],
+          [transparent,orange,orange,orange,orange,orange,orange,transparent],
+          [transparent,white,white,orange,white,white,orange,transparent],
           [orange,blue,white,orange,blue,white,orange,orange],
           [orange,orange,orange,orange,orange,orange,orange,orange],
           [orange,orange,orange,orange,orange,orange,orange,orange],
           [orange,orange,orange,orange,orange,orange,orange,orange],
-          [black,orange,black,orange,orange,black,orange,black]
+          [transparent,orange,transparent,orange,orange,transparent,orange,transparent]
          ]
 ghost = [ # When pacman has the power-pill
-          [black,black,blue,blue,blue,blue,black,black],
-          [black,blue,blue,blue,blue,blue,blue,black],
-          [black,blue,blue,white,blue,white,blue,black],
+          [transparent,transparent,blue,blue,blue,blue,transparent,transparent],
+          [transparent,blue,blue,blue,blue,blue,blue,transparent],
+          [transparent,blue,blue,white,blue,white,blue,transparent],
           [blue,blue,blue,white,blue,white,blue,blue],
           [blue,blue,blue,blue,blue,blue,blue,blue],
           [blue,white,blue,white,blue,white,blue,blue],
           [blue,blue,white,blue,white,blue,white,blue],
-          [black,blue,black,blue,blue,black,blue,black]
+          [transparent,blue,transparent,blue,blue,transparent,blue,transparent]
          ]
 
 #//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -409,10 +434,7 @@ Tile.Seq += 1
 if Tile.Seq >= 256:
         Tile.Seq = 0
 
-# run loop
-advance = True
-frame = 0 # initializing the variable so that the update will trigger right away
-ti = 0
+# Pacman variables
 pill = False
 pacman_pos = WIDTH
 blinky_pos = pacman_pos + 10
@@ -420,40 +442,47 @@ pinky_pos = pacman_pos + 20
 inky_pos = pacman_pos + 30
 clyde_pos = pacman_pos + 40
 scene = []
-while Tile != 0: #
+
+
+def Pacman( adv ):
+    global pacman_pos, blinky_pos, pinky_pos, inky_pos, clyde_pos, scene, pill
+    if pacman_pos < -48:
+        pill = True
+    elif pacman_pos > 48:
+        pill = False
+
+    blinky_pos = pacman_pos + 10
+    pinky_pos = pacman_pos + 20
+    inky_pos = pacman_pos + 30
+    clyde_pos = pacman_pos + 40
+
+    if pacman_pos % 4 < 2:
+        if pill:
+            DrawSprite(pacman_pos, 0, pacman3, scene)
+        else:
+            DrawSprite(pacman_pos, 0, pacman, scene)
+    else:
+        DrawSprite(pacman_pos, 0, pacman2, scene)
+    if pill:
+        DrawSprite(blinky_pos, 0, ghost, scene)
+        DrawSprite(pinky_pos, 0, ghost, scene)
+        DrawSprite(inky_pos, 0, ghost, scene)
+        DrawSprite(clyde_pos, 0, ghost, scene)
+        pacman_pos += adv
+    else:
+        DrawSprite(blinky_pos, 0, blinky, scene)
+        DrawSprite(pinky_pos, 0, pinky, scene)
+        DrawSprite(inky_pos, 0, inky, scene)
+        DrawSprite(clyde_pos, 0, clyde, scene)
+        pacman_pos -= adv
+    
+    
+while Tile != 0:
         # Clear the sceen
         scene = deepcopy(blankscene)
-        
-        # Build the scene
-        if pacman_pos % 4 < 2:
-            if pill:
-                AddSprite(pacman_pos, 0, pacman3, 8, 8, scene)
-            else:
-                AddSprite(pacman_pos, 0, pacman, 8, 8, scene)
-        else:
-            AddSprite(pacman_pos, 0, pacman2, 8, 8, scene)
-        if pill:
-            AddSprite(blinky_pos, 0, ghost, 8, 8, scene)
-            AddSprite(pinky_pos, 0, ghost, 8, 8, scene)
-            AddSprite(inky_pos, 0, ghost, 8, 8, scene)
-            AddSprite(clyde_pos, 0, ghost, 8, 8, scene)
-            pacman_pos += 1
-        else:
-            AddSprite(blinky_pos, 0, blinky, 8, 8, scene)
-            AddSprite(pinky_pos, 0, pinky, 8, 8, scene)
-            AddSprite(inky_pos, 0, inky, 8, 8, scene)
-            AddSprite(clyde_pos, 0, clyde, 8, 8, scene)
-            pacman_pos -= 1
-        
-        if pacman_pos < -48:
-            pill = True
-        elif pacman_pos > 48:
-            pill = False
 
-        blinky_pos = pacman_pos + 10
-        pinky_pos = pacman_pos + 20
-        inky_pos = pacman_pos + 30
-        clyde_pos = pacman_pos + 40
+        # Build the scene
+        Pacman(1)
 
         # Update tiles
         view = GetView8x8(scene, 0, 0)
@@ -565,7 +594,6 @@ while Tile != 0: #
         Tile.Seq += 1
         if Tile.Seq >= 256:
                 Tile.Seq = 0
-        
 
         #wake up ever so often and perform this ...                
         time.sleep(LOOP_INTERVAL)
